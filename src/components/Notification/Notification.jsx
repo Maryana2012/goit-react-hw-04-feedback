@@ -7,6 +7,7 @@ export default function Notification({message}) {
             <p className={css.Message}>{ message}</p>
            </div>
 }
+
 Notification.propTypes = {
     message: PropTypes.string.isRequired
 }

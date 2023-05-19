@@ -15,40 +15,40 @@ export default function Feedback() {
         if (name === "good") { setGood(prevState => prevState + 1) } 
         if (name === "neutral") { setNeutral(prevState => prevState + 1) }
         if (name==="bad"){  setBad(prevState=>prevState +1)    }
-}    
+    }    
    
-const countTotalFeedback = () => {
-    let total = good + neutral + bad;
-    return total;
+    const countTotalFeedback = () => {
+        let total = good + neutral + bad;
+        return total;
     }
-const countPositiveFeedbackPercentage = () => {
-    let positivePercentage = Math.ceil(good / (good + neutral + bad) * 100);
-    return positivePercentage;
+
+    const countPositiveFeedbackPercentage = () => {
+        let positivePercentage = Math.ceil(good / (good + neutral + bad) * 100);
+        return positivePercentage;
     } 
-const arrayOptions = { good, neutral, bad }
-const options = Object.keys(arrayOptions)
+
+    const arrayOptions = { good, neutral, bad }
+    const options = Object.keys(arrayOptions)
+    
 return (<div>
         <Section title='Please leave feedback'>          
         <FeedbackOptions
             onLeaveFeedback={handleFeedback}  
-            options={options}
-        />
-              </Section>      
+            options={options}/>
+        </Section>      
            
-            <Section title="Statistics">
-               {(good === 0 && neutral === 0 && bad === 0)
-                ?  <Notification
-                message="There is no feedback"/>
-                :  <Statistics
+        <Section title="Statistics">
+            {(good === 0 && neutral === 0 && bad === 0)
+            ?  <Notification message="There is no feedback"/>
+            :  <Statistics
                    good={good}
                    neutral={neutral}
                    bad={bad}
                    total={countTotalFeedback()}
                    positivePercentage={countPositiveFeedbackPercentage()} />        }
-            </Section>
-</div>
-)        
-
+               </Section>
+        </div>
+       )        
 }
 
 
